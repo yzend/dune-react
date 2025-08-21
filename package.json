@@ -11,7 +11,8 @@
     "storybook": "storybook dev -p 8080",
     "preview-storybook": "npx http-server storybook-static",
     "build-storybook": "storybook build",
-    "deploy-storybook": "storybook-to-ghpages"
+    "deploy-storybook": "storybook-to-ghpages -- --existing-output-dir=storybook-static",
+    "ondeploy": "pnpm build-storybook && pnpm deploy-storybook"
   },
   "dependencies": {
     "@fluid-tailwind/tailwind-merge": "^0.0.3",
@@ -70,8 +71,8 @@
   "files": [
     "dist"
   ],
-  "main": "./dist/index.umd.js",
-  "module": "./dist/index.es.js",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
   "typings": "./dist/index.d.ts",
   "resolutions": {
     "string-width": "^4",
