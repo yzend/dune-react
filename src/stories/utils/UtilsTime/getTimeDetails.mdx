@@ -1,0 +1,165 @@
+import { Meta, Controls } from "@storybook/addon-docs/blocks";
+import ParamsTable from "../../StoryComponents/ParamsTable";
+
+<Meta title="Utils/utils-time/getTimeDetails(获取详细时间信息)" />
+
+# getTimeDetails
+
+### 功能描述
+
+获取详细的时间信息，返回包含各种时间单位的对象，用于需要精确时间差计算的场景。
+
+### 参数说明
+
+<ParamsTable
+  params={[
+    {
+      name: "date",
+      type: "string | Date",
+      required: true,
+      description: "目标日期，可以是日期字符串或 Date 对象",
+    },
+  ]}
+/>
+
+### 返回值
+
+- **类型**: object
+- **描述**: 包含各种时间单位的对象
+
+<ParamsTable
+  params={[
+    {
+      name: "seconds",
+      type: "number",
+      required: false,
+      description: "秒数差",
+    },
+    {
+      name: "minutes",
+      type: "number",
+      required: false,
+      description: "分钟差",
+    },
+    {
+      name: "hours",
+      type: "number",
+      required: false,
+      description: "小时差",
+    },
+    {
+      name: "days",
+      type: "number",
+      required: false,
+      description: "天数差",
+    },
+    {
+      name: "weeks",
+      type: "number",
+      required: false,
+      description: "周数差",
+    },
+    {
+      name: "months",
+      type: "number",
+      required: false,
+      description: "月数差",
+    },
+    {
+      name: "years",
+      type: "number",
+      required: false,
+      description: "年数差",
+    },
+    {
+      name: "isValid",
+      type: "boolean",
+      required: false,
+      description: "日期是否有效",
+    },
+  ]}
+/>
+
+### 使用示例
+
+```typescript
+import { getTimeDetails } from "dune-react/utils";
+
+// 基本用法
+const date = new Date("2024-01-01");
+const details = getTimeDetails(date);
+console.log(details);
+// {
+//   seconds: 7776000,
+//   minutes: 129600,
+//   hours: 2160,
+//   days: 90,
+//   weeks: 12,
+//   months: 3,
+//   years: 0,
+//   isValid: true
+// }
+
+// 处理字符串日期
+const stringDate = "2024-01-15T10:30:00Z";
+const stringDetails = getTimeDetails(stringDate);
+console.log(stringDetails.days); // 天数差
+console.log(stringDetails.hours); // 小时差
+
+// 处理无效日期
+const invalidDetails = getTimeDetails("invalid-date");
+console.log(invalidDetails);
+// {
+//   seconds: 0,
+//   minutes: 0,
+//   hours: 0,
+//   days: 0,
+//   weeks: 0,
+//   months: 0,
+//   years: 0,
+//   isValid: false
+// }
+
+// 处理未来时间
+const futureDate = new Date(Date.now() + 86400000); // 明天
+const futureDetails = getTimeDetails(futureDate);
+console.log(futureDetails.isValid); // false
+
+// 条件判断使用
+const timeInfo = getTimeDetails(date);
+if (timeInfo.isValid) {
+  if (timeInfo.days > 30) {
+    console.log("超过一个月");
+  } else if (timeInfo.hours > 24) {
+    console.log("超过一天");
+  } else {
+    console.log("今天内");
+  }
+}
+```
+
+### 时间计算规则
+
+- **秒**: 精确到秒的时间差
+- **分钟**: 向下取整的分钟数
+- **小时**: 向下取整的小时数
+- **天**: 向下取整的天数
+- **周**: 向下取整的周数（7天为1周）
+- **月**: 向下取整的月数（30天为1月）
+- **年**: 向下取整的年数（365天为1年）
+
+### 特性
+
+- ✅ 返回所有时间单位的精确数值
+- ✅ 自动处理无效日期和未来时间
+- ✅ 提供 isValid 标志用于错误处理
+- ✅ 支持字符串和 Date 对象输入
+- ✅ 向下取整确保准确性
+
+### 应用场景
+
+- 精确的时间差计算
+- 条件判断和业务逻辑
+- 数据分析和统计
+- 定时任务和调度
+- 缓存过期时间计算

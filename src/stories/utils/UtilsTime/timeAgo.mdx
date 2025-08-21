@@ -1,0 +1,111 @@
+import { Meta, Controls } from "@storybook/addon-docs/blocks";
+import ParamsTable from "../../StoryComponents/ParamsTable";
+
+<Meta title="Utils/utils-time/timeAgo(计算相对时间)" />
+
+# timeAgo
+
+### 功能描述
+
+计算距离现在多少时间，返回格式化的相对时间字符串。支持中英文显示，可配置是否显示秒数和零值。
+
+### 参数说明
+
+<ParamsTable
+  params={[
+    {
+      name: "date",
+      type: "string | Date",
+      required: true,
+      description: "目标日期，可以是日期字符串或 Date 对象",
+    },
+    {
+      name: "options",
+      type: "object",
+      required: false,
+      description: "配置选项对象",
+    },
+    {
+      name: "options.lang",
+      type: "'zh' | 'en'",
+      required: false,
+      description: "语言设置，默认为 'zh'（中文）",
+    },
+    {
+      name: "options.showSeconds",
+      type: "boolean",
+      required: false,
+      description: "是否显示秒数，默认为 false",
+    },
+    {
+      name: "options.showZero",
+      type: "boolean",
+      required: false,
+      description: "是否显示零值，默认为 false",
+    },
+  ]}
+/>
+
+### 返回值
+
+- **类型**: string
+- **描述**: 格式化的相对时间字符串
+
+### 使用示例
+
+```typescript
+import { timeAgo } from "dune-react/utils";
+
+// 基本用法
+const date = new Date("2024-01-01");
+console.log(timeAgo(date)); // "3个月前"
+
+// 英文显示
+console.log(timeAgo(date, { lang: "en" })); // "3 months ago"
+
+// 显示秒数
+const recentDate = new Date(Date.now() - 30000); // 30秒前
+console.log(timeAgo(recentDate, { showSeconds: true })); // "30秒前"
+
+// 显示零值
+const now = new Date();
+console.log(timeAgo(now, { showZero: true })); // "0秒前"
+
+// 处理字符串日期
+console.log(timeAgo("2024-01-15T10:30:00Z")); // "2个月前"
+
+// 处理未来时间
+const futureDate = new Date(Date.now() + 86400000); // 明天
+console.log(timeAgo(futureDate)); // "刚刚"
+
+// 处理无效日期
+console.log(timeAgo("invalid-date")); // "刚刚"
+```
+
+### 时间单位
+
+函数支持以下时间单位的显示：
+
+- **年**: 年前 / years ago
+- **月**: 个月前 / months ago  
+- **周**: 周前 / weeks ago
+- **天**: 天前 / days ago
+- **小时**: 小时前 / hours ago
+- **分钟**: 分钟前 / minutes ago
+- **秒**: 秒前 / seconds ago（需要 showSeconds: true）
+
+### 特性
+
+- ✅ 支持中英文双语显示
+- ✅ 自动处理无效日期和未来时间
+- ✅ 可配置是否显示秒数和零值
+- ✅ 智能时间单位选择
+- ✅ 支持字符串和 Date 对象输入
+
+### 应用场景
+
+- 社交媒体时间显示
+- 评论系统时间戳
+- 文件修改时间显示
+- 用户活动时间记录
+- 新闻发布时间展示 

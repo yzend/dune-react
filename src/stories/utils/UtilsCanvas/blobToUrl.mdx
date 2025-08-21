@@ -1,0 +1,76 @@
+import { Meta, Controls } from "@storybook/addon-docs/blocks";
+import ParamsTable from "../../StoryComponents/ParamsTable";
+
+<Meta title="Utils/utils-canvas/blobToUrl(Blob转URL)" />
+
+# blobToUrl
+
+### 功能描述
+
+将 Blob 对象转换为可访问的 URL，用于在浏览器中显示或下载文件。
+
+### 参数说明
+
+<ParamsTable
+  params={[
+    {
+      name: "blobData",
+      type: "Blob",
+      required: true,
+      description: "要转换的 Blob 数据",
+    },
+  ]}
+/>
+
+### 返回值
+
+- **类型**: string
+- **描述**: 生成的 Blob URL
+
+### 使用示例
+
+```typescript
+import { blobToUrl } from "dune-react/utils";
+
+// 从 Canvas 生成图片 URL
+const canvas = document.createElement('canvas');
+canvas.toBlob((blob) => {
+  if (blob) {
+    const url = blobToUrl(blob);
+    console.log(url); // "blob:http://localhost:3000/abc123..."
+    
+    // 在 img 标签中使用
+    const img = document.createElement('img');
+    img.src = url;
+    document.body.appendChild(img);
+    
+    // 记得在不需要时释放 URL
+    // URL.revokeObjectURL(url);
+  }
+}, 'image/png');
+
+// 处理文件上传预览
+const fileInput = document.querySelector('input[type="file"]');
+fileInput.addEventListener('change', (e) => {
+  const file = e.target.files[0];
+  if (file) {
+    const url = blobToUrl(file);
+    // 用于预览图片或视频
+    const preview = document.getElementById('preview');
+    preview.src = url;
+  }
+});
+```
+
+### 特性
+
+- ✅ 生成唯一的 Blob URL
+- ✅ 支持所有 Blob 类型
+- ✅ 可用于图片、视频、音频等媒体预览
+- ⚠️ 需要手动释放内存（URL.revokeObjectURL）
+
+### 注意事项
+
+- 生成的 URL 仅在当前页面有效
+- 页面刷新后 URL 会失效
+- 建议在不需要时调用 `URL.revokeObjectURL()` 释放内存

@@ -1,0 +1,68 @@
+import { Meta, Controls } from "@storybook/addon-docs/blocks";
+import ParamsTable from "../../StoryComponents/ParamsTable";
+
+<Meta title="Utils/utils-canvas/base64ToUrl(Base64转URL)" />
+
+# base64ToUrl
+
+### 功能描述
+
+将 Base64 字符串转换为可访问的 URL，结合了 Base64 转 Blob 和 Blob 转 URL 的功能。
+
+### 参数说明
+
+<ParamsTable
+  params={[
+    {
+      name: "base64",
+      type: "string",
+      required: true,
+      description: "Base64 字符串，支持带 MIME 类型头的数据",
+    },
+  ]}
+/>
+
+### 返回值
+
+- **类型**: string
+- **描述**: 生成的 Blob URL
+
+### 使用示例
+
+```typescript
+import { base64ToUrl } from "dune-react/utils";
+
+// 从 Canvas 获取 Base64 并生成 URL
+const canvas = document.createElement('canvas');
+const base64Data = canvas.toDataURL('image/png');
+const url = base64ToUrl(base64Data);
+console.log(url); // "blob:http://localhost:3000/abc123..."
+
+// 在图片元素中使用
+const img = document.createElement('img');
+img.src = url;
+document.body.appendChild(img);
+
+// 处理服务器返回的 Base64 图片
+const serverBase64 = "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD...";
+const imageUrl = base64ToUrl(serverBase64);
+const previewImg = document.getElementById('preview');
+previewImg.src = imageUrl;
+
+// 处理纯 Base64 字符串
+const pureBase64 = "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==";
+const pureUrl = base64ToUrl(pureBase64);
+```
+
+### 特性
+
+- ✅ 一步完成 Base64 到 URL 的转换
+- ✅ 自动处理 MIME 类型头
+- ✅ 支持所有图片格式
+- ⚠️ 需要手动释放内存
+
+### 注意事项
+
+- 生成的 URL 仅在当前页面有效
+- 建议在不需要时调用 `URL.revokeObjectURL()` 释放内存
+- 适用于图片预览、文件下载等场景

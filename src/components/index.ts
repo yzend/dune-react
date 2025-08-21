@@ -1,6 +1,3 @@
-import EmptyTable from "./emptyTable/EmptyTable";
-import MultipleSelector from "./multipleSelector/MultipleSelector";
-import MultiDatePicker from "./multiDatePicker/MultiDatePicker";
-import MultiCascader from "./multiCascader/MultiCascader";
+import Background from "./ui-custom/background.tsx";
 
-export { EmptyTable, MultipleSelector, MultiDatePicker, MultiCascader };
+export { Background };

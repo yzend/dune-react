@@ -1,0 +1,82 @@
+import { Meta, Controls } from "@storybook/addon-docs/blocks";
+import ParamsTable from "../../StoryComponents/ParamsTable";
+
+<Meta title="Utils/utils-time/formatTimeAgo(格式化相对时间)" />
+
+# formatTimeAgo
+
+### 功能描述
+
+格式化日期为相对时间的简化版本，使用英文显示，是 `timeAgo` 函数的便捷包装器。
+
+### 参数说明
+
+<ParamsTable
+  params={[
+    {
+      name: "date",
+      type: "string | Date",
+      required: true,
+      description: "目标日期，可以是日期字符串或 Date 对象",
+    },
+  ]}
+/>
+
+### 返回值
+
+- **类型**: string
+- **描述**: 英文格式的相对时间字符串
+
+### 使用示例
+
+```typescript
+import { formatTimeAgo } from "dune-react/utils";
+
+// 基本用法
+const date = new Date("2024-01-01");
+console.log(formatTimeAgo(date)); // "3 months ago"
+
+// 处理字符串日期
+console.log(formatTimeAgo("2024-01-15T10:30:00Z")); // "2 months ago"
+
+// 处理最近的时间
+const recentDate = new Date(Date.now() - 3600000); // 1小时前
+console.log(formatTimeAgo(recentDate)); // "1 hour ago"
+
+// 处理很久以前的时间
+const oldDate = new Date("2020-01-01");
+console.log(formatTimeAgo(oldDate)); // "4 years ago"
+
+// 处理无效日期
+console.log(formatTimeAgo("invalid-date")); // "just now"
+```
+
+### 等价用法
+
+```typescript
+// 以下两种用法是等价的
+import { formatTimeAgo, timeAgo } from "dune-react/utils";
+
+const date = new Date("2024-01-01");
+
+// 使用 formatTimeAgo
+console.log(formatTimeAgo(date));
+
+// 使用 timeAgo 的英文版本
+console.log(timeAgo(date, { lang: "en" }));
+```
+
+### 特性
+
+- ✅ 英文显示格式
+- ✅ 自动处理无效日期
+- ✅ 智能时间单位选择
+- ✅ 支持字符串和 Date 对象输入
+- ✅ 简洁的 API 设计
+
+### 应用场景
+
+- 国际化应用的时间显示
+- 英文界面的时间戳
+- 日志系统的时间记录
+- API 响应的时间格式化 

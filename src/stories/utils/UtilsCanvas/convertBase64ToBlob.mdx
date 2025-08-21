@@ -1,0 +1,67 @@
+import { Meta, Controls } from "@storybook/addon-docs/blocks";
+import ParamsTable from "../../StoryComponents/ParamsTable";
+
+<Meta title="Utils/utils-canvas/convertBase64ToBlob(Base64转Blob)" />
+
+# convertBase64ToBlob
+
+### 功能描述
+
+将 Base64 字符串转换为 Blob 对象，支持带 MIME 类型头的完整 Base64 数据。
+
+### 参数说明
+
+<ParamsTable
+  params={[
+    {
+      name: "base64",
+      type: "string",
+      required: true,
+      description: "Base64 字符串，支持带 MIME 类型头的数据",
+    },
+  ]}
+/>
+
+### 返回值
+
+- **类型**: Blob
+- **描述**: 转换后的 Blob 对象
+
+### 使用示例
+
+```typescript
+import { convertBase64ToBlob } from "dune-react/utils";
+
+// 处理带 MIME 类型头的 Base64
+const base64WithHeader =
+  "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==";
+const blob = convertBase64ToBlob(base64WithHeader);
+console.log(blob.type); // "image/png"
+console.log(blob.size); // 文件大小
+
+// 处理纯 Base64 字符串（需要手动指定类型）
+const pureBase64 =
+  "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==";
+const blob2 = convertBase64ToBlob(pureBase64);
+// 注意：纯 Base64 可能无法正确识别类型
+
+// 从 Canvas 获取 Base64 并转换
+const canvas = document.createElement("canvas");
+const base64Data = canvas.toDataURL("image/jpeg", 0.8);
+const imageBlob = convertBase64ToBlob(base64Data);
+console.log(imageBlob.type); // "image/jpeg"
+```
+
+### 特性
+
+- ✅ 自动解析 MIME 类型头
+- ✅ 支持完整的 data URL 格式
+- ✅ 处理纯 Base64 字符串
+- ✅ 保持原始文件类型信息
+
+### 支持的格式
+
+- `data:image/png;base64,<data>`
+- `data:image/jpeg;base64,<data>`
+- `data:application/pdf;base64,<data>`
+- 纯 Base64 字符串（类型可能无法正确识别）

@@ -1,0 +1,136 @@
+import { Meta, Controls } from "@storybook/addon-docs/blocks";
+import ParamsTable from "../../StoryComponents/ParamsTable";
+
+<Meta title="Utils/utils-time/sleep(异步睡眠)" />
+
+# sleep
+
+### 功能描述
+
+创建一个异步睡眠函数，用于在异步操作中暂停执行指定的毫秒数。返回一个 Promise，可以使用 await 或 .then() 来处理。
+
+### 参数说明
+
+<ParamsTable
+  params={[
+    {
+      name: "ms",
+      type: "number",
+      required: true,
+      description: "睡眠时间，单位为毫秒",
+    },
+  ]}
+/>
+
+### 返回值
+
+- **类型**: Promise&lt;void&gt;
+- **描述**: 睡眠完成后解析的 Promise
+
+### 使用示例
+
+```typescript
+import { sleep } from "dune-react/utils";
+
+// 基本用法 - 使用 async/await
+async function example1() {
+  console.log("开始");
+  await sleep(1000); // 睡眠1秒
+  console.log("1秒后");
+}
+
+// 使用 Promise 链
+function example2() {
+  console.log("开始");
+  sleep(2000).then(() => {
+    console.log("2秒后");
+  });
+}
+
+// 在循环中使用
+async function example3() {
+  for (let i = 0; i < 3; i++) {
+    console.log(`第 ${i + 1} 次执行`);
+    await sleep(500); // 每次间隔500毫秒
+  }
+}
+
+// 模拟 API 请求延迟
+async function mockApiCall() {
+  console.log("发送请求...");
+  await sleep(1000); // 模拟网络延迟
+  console.log("请求完成");
+  return { data: "success" };
+}
+
+// 实现重试机制
+async function retryOperation(maxRetries = 3) {
+  for (let i = 0; i < maxRetries; i++) {
+    try {
+      // 尝试执行操作
+      const result = await someOperation();
+      return result;
+    } catch (error) {
+      if (i === maxRetries - 1) throw error;
+
+      console.log(`操作失败，${i + 1}秒后重试...`);
+      await sleep((i + 1) * 1000); // 递增延迟
+    }
+  }
+}
+
+// 实现防抖
+async function debounce(func, delay) {
+  let timeoutId;
+  return function (...args) {
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(async () => {
+      await func.apply(this, args);
+    }, delay);
+  };
+}
+
+// 实现节流
+async function throttle(func, delay) {
+  let lastCall = 0;
+  return async function (...args) {
+    const now = Date.now();
+    if (now - lastCall >= delay) {
+      lastCall = now;
+      await func.apply(this, args);
+    }
+  };
+}
+```
+
+### 与其他延迟方法的对比
+
+```typescript
+// sleep 函数（推荐）
+await sleep(1000);
+
+// setTimeout 包装（不推荐）
+await new Promise((resolve) => setTimeout(resolve, 1000));
+
+// 直接使用 setTimeout（同步代码中）
+setTimeout(() => {
+  console.log("1秒后执行");
+}, 1000);
+```
+
+### 特性
+
+- ✅ 基于 Promise 的异步实现
+- ✅ 支持 async/await 语法
+- ✅ 精确的毫秒级控制
+- ✅ 不会阻塞主线程
+- ✅ 简洁的 API 设计
+
+### 应用场景
+
+- 模拟网络延迟
+- 实现重试机制
+- 防抖和节流功能
+- 动画和过渡效果
+- 测试和调试
+- 用户交互反馈

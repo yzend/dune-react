@@ -1,0 +1,71 @@
+import { Meta, Controls } from "@storybook/addon-docs/blocks";
+import ParamsTable from "../../StoryComponents/ParamsTable";
+
+<Meta title="Utils/utils-canvas/base64ToFile(Base64转File)" />
+
+# base64ToFile
+
+### 功能描述
+
+将 Base64 字符串转换为 File 对象，结合了 Base64 转 Blob 和 Blob 转 File 的功能。
+
+### 参数说明
+
+<ParamsTable
+  params={[
+    {
+      name: "base64",
+      type: "string",
+      required: true,
+      description: "Base64 字符串，支持带 MIME 类型头的数据",
+    },
+  ]}
+/>
+
+### 返回值
+
+- **类型**: File
+- **描述**: 转换后的 File 对象，文件名为 "tag.\{扩展名\}"
+
+### 使用示例
+
+```typescript
+import { base64ToFile } from "dune-react/utils";
+
+// 从 Canvas 获取 Base64 并转换为 File
+const canvas = document.createElement("canvas");
+const base64Data = canvas.toDataURL("image/png");
+const file = base64ToFile(base64Data);
+console.log(file.name); // "tag.png"
+console.log(file.type); // "image/png"
+console.log(file.size); // 文件大小
+
+// 用于文件上传
+const formData = new FormData();
+formData.append("image", file);
+
+// 处理服务器返回的 Base64 图片
+const serverBase64 = "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD...";
+const imageFile = base64ToFile(serverBase64);
+console.log(imageFile.name); // "tag.jpg"
+
+// 处理 PDF 文件
+const pdfBase64 = "data:application/pdf;base64,JVBERi0xLjQKJcOkw7zDtsO...";
+const pdfFile = base64ToFile(pdfBase64);
+console.log(pdfFile.name); // "tag.pdf"
+console.log(pdfFile.type); // "application/pdf"
+```
+
+### 特性
+
+- ✅ 一步完成 Base64 到 File 的转换
+- ✅ 自动提取文件扩展名
+- ✅ 保持原始 MIME 类型
+- ✅ 支持所有文件类型
+
+### 应用场景
+
+- 图片上传前的格式转换
+- 服务器数据本地化处理
+- 文件下载功能实现
+- Canvas 导出为文件

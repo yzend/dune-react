@@ -1,0 +1,89 @@
+import { Meta, Controls } from "@storybook/addon-docs/blocks";
+import ParamsTable from "../../StoryComponents/ParamsTable";
+
+<Meta title="Utils/utils-time/getTimestamp(获取时间戳)" />
+
+# getTimestamp
+
+### 功能描述
+
+获取当前时间的 Unix 时间戳（秒级），返回从 1970 年 1 月 1 日 00:00:00 UTC 到现在的秒数。
+
+### 参数说明
+
+<ParamsTable
+  params={[]}
+/>
+
+### 返回值
+
+- **类型**: number
+- **描述**: Unix 时间戳（秒级）
+
+### 使用示例
+
+```typescript
+import { getTimestamp } from "dune-react/utils";
+
+// 基本用法
+const timestamp = getTimestamp();
+console.log(timestamp); // 1704067200 (示例值)
+
+// 用于 API 请求
+const apiData = {
+  data: "some data",
+  timestamp: getTimestamp(),
+  version: "1.0"
+};
+
+// 用于缓存键
+const cacheKey = `user_data_${getTimestamp()}`;
+
+// 用于日志记录
+console.log(`[${getTimestamp()}] User login successful`);
+
+// 用于数据签名
+const signature = createSignature({
+  data: "important data",
+  timestamp: getTimestamp()
+});
+
+// 比较时间戳
+const startTime = getTimestamp();
+// ... 执行一些操作
+const endTime = getTimestamp();
+const duration = endTime - startTime;
+console.log(`操作耗时: ${duration} 秒`);
+```
+
+### 时间戳格式
+
+返回的时间戳是秒级的 Unix 时间戳，与 JavaScript 的 `Date.now()` 返回的毫秒级时间戳不同：
+
+```typescript
+// getTimestamp() 返回秒级时间戳
+const secondsTimestamp = getTimestamp(); // 1704067200
+
+// Date.now() 返回毫秒级时间戳
+const millisecondsTimestamp = Date.now(); // 1704067200000
+
+// 转换关系
+console.log(Math.floor(Date.now() / 1000) === getTimestamp()); // true
+```
+
+### 特性
+
+- ✅ 返回秒级 Unix 时间戳
+- ✅ 基于 UTC 时间
+- ✅ 无参数调用
+- ✅ 高性能实现
+- ✅ 跨平台兼容
+
+### 应用场景
+
+- API 请求时间戳
+- 数据签名和验证
+- 缓存键生成
+- 日志记录
+- 性能监控
+- 数据版本控制
