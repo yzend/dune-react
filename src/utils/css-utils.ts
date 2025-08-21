@@ -21,10 +21,3 @@ export function liquidGlass(...args: ClassValue[]) {
     args
   );
 }
-
-/**
- * 延时函数
- */
-export function sleep(ms: number) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-}

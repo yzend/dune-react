@@ -33,11 +33,14 @@ export default defineConfig({
       external: [
         "react",
         "react-dom",
+        "react/jsx-runtime",
+        "react/jsx-dev-runtime",
         "dayjs",
         "lodash-es",
         "axios",
         "file-saver",
         "motion",
+        "framer-motion",
       ],
       output: [
         {
@@ -47,7 +50,20 @@ export default defineConfig({
           // 保留模块结构
           preserveModules: true,
           // 在根路径将保留的模块结构放在改文件夹下， ex: es/components/xxxxxx
-          preserveModulesRoot: "components",
+          preserveModulesRoot: "src",
+          // 确保外部依赖不会被打包
+          globals: {
+            react: "React",
+            "react-dom": "ReactDOM",
+            "react/jsx-runtime": "jsxRuntime",
+            "react/jsx-dev-runtime": "jsxDevRuntime",
+            dayjs: "dayjs",
+            "lodash-es": "_",
+            axios: "axios",
+            "file-saver": "FileSaver",
+            motion: "motion",
+            "framer-motion": "framerMotion",
+          },
         },
       ],
     },
