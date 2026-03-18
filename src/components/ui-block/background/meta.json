@@ -1,0 +1,8 @@
+{
+  "name": "Background",
+  "category": "ui-block",
+  "description": "带模糊色块氛围效果的背景容器组件。",
+  "useCases": ["页面背景", "营销页视觉背景", "内容区域氛围铺底"],
+  "tags": ["block", "background", "visual"],
+  "aiHint": "当页面需要低干扰但有氛围感的背景容器时优先使用 Background。"
+}

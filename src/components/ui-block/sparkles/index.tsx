@@ -1,4 +1,5 @@
 "use client";
+
 import { cn } from "@/utils/css-utils.ts";
 import type { Container, SingleOrMultiple } from "@tsparticles/engine";
 import Particles, { initParticlesEngine } from "@tsparticles/react";
@@ -17,6 +18,7 @@ type ParticlesProps = {
   particleColor?: string;
   particleDensity?: number;
 };
+
 export const SparklesCore = (props: ParticlesProps) => {
   const {
     id,
@@ -29,6 +31,7 @@ export const SparklesCore = (props: ParticlesProps) => {
     particleDensity,
   } = props;
   const [init, setInit] = useState(false);
+
   useEffect(() => {
     initParticlesEngine(async (engine) => {
       await loadSlim(engine);
@@ -36,6 +39,7 @@ export const SparklesCore = (props: ParticlesProps) => {
       setInit(true);
     });
   }, []);
+
   const controls = useAnimation();
 
   const particlesLoaded = async (container?: Container) => {
@@ -50,6 +54,7 @@ export const SparklesCore = (props: ParticlesProps) => {
   };
 
   const generatedId = useId();
+
   return (
     <motion.div animate={controls} className={cn("opacity-0", className)}>
       {init && (
@@ -67,7 +72,6 @@ export const SparklesCore = (props: ParticlesProps) => {
               enable: false,
               zIndex: 1,
             },
-
             fpsLimit: 120,
             interactivity: {
               events: {
@@ -291,137 +295,6 @@ export const SparklesCore = (props: ParticlesProps) => {
                 opacityRate: 1,
                 sizeRate: 1,
                 velocityRate: 1,
-              },
-              destroy: {
-                bounds: {},
-                mode: "none",
-                split: {
-                  count: 1,
-                  factor: {
-                    value: 3,
-                  },
-                  rate: {
-                    value: {
-                      min: 4,
-                      max: 9,
-                    },
-                  },
-                  sizeOffset: true,
-                },
-              },
-              roll: {
-                darken: {
-                  enable: false,
-                  value: 0,
-                },
-                enable: false,
-                enlighten: {
-                  enable: false,
-                  value: 0,
-                },
-                mode: "vertical",
-                speed: 25,
-              },
-              tilt: {
-                value: 0,
-                animation: {
-                  enable: false,
-                  speed: 0,
-                  decay: 0,
-                  sync: false,
-                },
-                direction: "clockwise",
-                enable: false,
-              },
-              twinkle: {
-                lines: {
-                  enable: false,
-                  frequency: 0.05,
-                  opacity: 1,
-                },
-                particles: {
-                  enable: false,
-                  frequency: 0.05,
-                  opacity: 1,
-                },
-              },
-              wobble: {
-                distance: 5,
-                enable: false,
-                speed: {
-                  angle: 50,
-                  move: 10,
-                },
-              },
-              life: {
-                count: 0,
-                delay: {
-                  value: 0,
-                  sync: false,
-                },
-                duration: {
-                  value: 0,
-                  sync: false,
-                },
-              },
-              rotate: {
-                value: 0,
-                animation: {
-                  enable: false,
-                  speed: 0,
-                  decay: 0,
-                  sync: false,
-                },
-                direction: "clockwise",
-                path: false,
-              },
-              orbit: {
-                animation: {
-                  count: 0,
-                  enable: false,
-                  speed: 1,
-                  decay: 0,
-                  delay: 0,
-                  sync: false,
-                },
-                enable: false,
-                opacity: 1,
-                rotation: {
-                  value: 45,
-                },
-                width: 1,
-              },
-              links: {
-                blink: false,
-                color: {
-                  value: "#fff",
-                },
-                consent: false,
-                distance: 100,
-                enable: false,
-                frequency: 1,
-                opacity: 1,
-                shadow: {
-                  blur: 5,
-                  color: {
-                    value: "#000",
-                  },
-                  enable: false,
-                },
-                triangles: {
-                  enable: false,
-                  frequency: 1,
-                },
-                width: 1,
-                warp: false,
-              },
-              repulse: {
-                value: 0,
-                enabled: false,
-                distance: 1,
-                duration: 1,
-                factor: 1,
-                speed: 1,
               },
             },
             detectRetina: true,

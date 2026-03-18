@@ -1,8 +1,10 @@
 "use client";
+
 import { cn } from "@/utils/css-utils.ts";
-import { SparklesCore } from "./sparkles.tsx";
 import { AnimatePresence, motion } from "motion/react";
 import React, { useEffect, useId, useRef, useState } from "react";
+
+import { SparklesCore } from "../sparkles/index.tsx";
 
 export const Cover = ({
   children,
@@ -23,14 +25,14 @@ export const Cover = ({
       setContainerWidth(ref.current?.clientWidth ?? 0);
 
       const height = ref.current?.clientHeight ?? 0;
-      const numberOfBeams = Math.floor(height / 10); // Adjust the divisor to control the spacing
+      const numberOfBeams = Math.floor(height / 10);
       const positions = Array.from(
         { length: numberOfBeams },
         (_, i) => (i + 1) * (height / (numberOfBeams + 1))
       );
       setBeamPositions(positions);
     }
-  }, [ref.current]);
+  }, []);
 
   return (
     <div
@@ -218,9 +220,9 @@ export const CircleIcon = ({
   return (
     <div
       className={cn(
-        `group pointer-events-none h-2 w-2 animate-pulse rounded-full bg-neutral-600 opacity-20 group-hover/cover:hidden group-hover/cover:bg-white group-hover/cover:opacity-100 dark:bg-white`,
+        "group pointer-events-none h-2 w-2 animate-pulse rounded-full bg-neutral-600 opacity-20 group-hover/cover:hidden group-hover/cover:bg-white group-hover/cover:opacity-100 dark:bg-white",
         className
       )}
-    ></div>
+    />
   );
 };

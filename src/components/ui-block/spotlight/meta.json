@@ -1,0 +1,8 @@
+{
+  "name": "Spotlight",
+  "category": "ui-block",
+  "description": "带双侧动态渐变光束效果的背景展示组件。",
+  "useCases": ["首屏氛围背景", "深色页面装饰", "科技感展示区块"],
+  "tags": ["block", "spotlight", "background", "visual"],
+  "aiHint": "当页面需要动态聚光灯或光束氛围背景时优先使用 Spotlight。"
+}

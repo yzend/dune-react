@@ -1,0 +1,8 @@
+{
+  "name": "Cover",
+  "category": "ui-block",
+  "description": "带悬停粒子和光束效果的强调展示组件。",
+  "useCases": ["标题强调", "营销文案高亮", "交互式封面文本"],
+  "tags": ["block", "cover", "interactive", "visual"],
+  "aiHint": "当页面需要可悬停、高视觉反馈的短文本展示区块时优先使用 Cover。"
+}

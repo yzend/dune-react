@@ -1,0 +1,8 @@
+{
+  "name": "SparklesCore",
+  "category": "ui-block",
+  "description": "粒子闪烁视觉层组件，可作为区块背景或前景特效。",
+  "useCases": ["视觉背景", "悬停特效", "首屏装饰粒子层"],
+  "tags": ["block", "particles", "visual", "effect"],
+  "aiHint": "当页面需要粒子闪烁、轻动态氛围层时优先使用 SparklesCore。"
+}

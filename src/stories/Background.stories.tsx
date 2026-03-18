@@ -1,7 +1,7 @@
 import type { StoryObj } from "@storybook/react-vite";
 import React from "react";
 
-import Background from "../components/ui-custom/background";
+import Background from "../components/ui-block/background/index";
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta = {

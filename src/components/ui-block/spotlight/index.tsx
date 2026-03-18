@@ -25,12 +25,12 @@ export const Spotlight = ({
   xOffset = 100,
 }: SpotlightProps = {}) => {
   const [mounted, setMounted] = useState(false);
+
   useEffect(() => setMounted(true), []);
 
   const isDark = true;
 
   const { firstBg, secondBg, thirdBg } = useMemo(() => {
-    // Dark theme defaults (original values)
     const darkDefaults = {
       first:
         "radial-gradient(68.54% 68.72% at 55.02% 31.46%, hsla(210, 100%, 85%, .08) 0, hsla(210, 100%, 55%, .02) 50%, hsla(210, 100%, 45%, 0) 80%)",
@@ -40,7 +40,6 @@ export const Spotlight = ({
         "radial-gradient(50% 50% at 50% 50%, hsla(210, 100%, 85%, .04) 0, hsla(210, 100%, 45%, .02) 80%, transparent 100%)",
     } as const;
 
-    // Light theme defaults (slightly stronger/darker tints for visibility on light bg)
     const lightDefaults = {
       first:
         "radial-gradient(68.54% 68.72% at 55.02% 31.46%, hsla(210, 90%, 35%, .10) 0, hsla(210, 95%, 45%, .05) 50%, hsla(210, 95%, 55%, 0) 80%)",
@@ -59,8 +58,8 @@ export const Spotlight = ({
     } as const;
   }, [gradientFirst, gradientSecond, gradientThird, isDark]);
 
-  // Avoid hydration mismatch by rendering after mount
   if (!mounted) return null;
+
   return (
     <motion.div
       initial={{
@@ -93,7 +92,7 @@ export const Spotlight = ({
             width: `${width}px`,
             height: `${height}px`,
           }}
-          className={`absolute top-0 left-0`}
+          className="absolute top-0 left-0"
         />
 
         <div
@@ -103,7 +102,7 @@ export const Spotlight = ({
             width: `${smallWidth}px`,
             height: `${height}px`,
           }}
-          className={`absolute top-0 left-0 origin-top-left`}
+          className="absolute top-0 left-0 origin-top-left"
         />
 
         <div
@@ -113,7 +112,7 @@ export const Spotlight = ({
             width: `${smallWidth}px`,
             height: `${height}px`,
           }}
-          className={`absolute top-0 left-0 origin-top-left`}
+          className="absolute top-0 left-0 origin-top-left"
         />
       </motion.div>
 
@@ -136,7 +135,7 @@ export const Spotlight = ({
             width: `${width}px`,
             height: `${height}px`,
           }}
-          className={`absolute top-0 right-0`}
+          className="absolute top-0 right-0"
         />
 
         <div
@@ -146,7 +145,7 @@ export const Spotlight = ({
             width: `${smallWidth}px`,
             height: `${height}px`,
           }}
-          className={`absolute top-0 right-0 origin-top-right`}
+          className="absolute top-0 right-0 origin-top-right"
         />
 
         <div
@@ -156,7 +155,7 @@ export const Spotlight = ({
             width: `${smallWidth}px`,
             height: `${height}px`,
           }}
-          className={`absolute top-0 right-0 origin-top-right`}
+          className="absolute top-0 right-0 origin-top-right"
         />
       </motion.div>
     </motion.div>
