@@ -1,0 +1,21 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Shadcn/Toast" />
+
+# Toast
+
+```ts
+export type ToastProps = {
+  id?: string
+  title?: React.ReactNode
+  description?: React.ReactNode
+  action?: ToastActionElement
+  variant?: "default" | "destructive"
+  open?: boolean
+  onOpenChange?: (open: boolean) => void
+}
+```
+
+当前仓库中的 `toast.tsx` 是兼容层类型定义，不提供独立可渲染组件。
+
+实际通知展示能力由 [Shadcn/Sonner](?path=/docs/shadcn-sonner--docs) 提供，`ToastProps` 主要用于迁移期间保持类型接口稳定。

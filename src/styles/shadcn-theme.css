@@ -1,0 +1,411 @@
+:root {
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  /* Primary - 紫色 #6C52FF */
+  --primary: oklch(0.57 0.24 282.36);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  /* Destructive/Error - 红色 #D82A38 */
+  --destructive: oklch(0.574 0.207 23.267);
+  --destructive-foreground: oklch(0.985 0 0);
+  --border: lab(90.952% 0 -0.0000119209);
+  --input: lab(90.952% 0 -0.0000119209);
+  /* Ring 使用 Primary 的浅色版本 */
+  --ring: oklch(0.57 0.24 282.36);
+  --chart-1: oklch(0.57 0.24 282.36);
+  --chart-2: oklch(0.664 0.163 153.128);
+  --chart-3: oklch(0.574 0.207 23.267);
+  --chart-4: oklch(0.77 0.154 80.945);
+  --chart-5: oklch(0.636 0.132 71.194);
+  --radius: 0.625rem;
+  --sidebar: oklch(1 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.57 0.24 282.36);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: #f3f4f6;
+  --sidebar-accent-foreground: #f3f4f6;
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.57 0.24 282.36);
+
+  /* 主色颜色色阶 */
+  --color-primary-50: #f3f2ff;
+  --color-primary-100: #e8e8ff;
+  --color-primary-200: #d4d4ff;
+  --color-primary-300: #b6b1ff;
+  --color-primary-400: #9185ff;
+  --color-primary-500: #6c52ff;
+  --color-primary-600: #5a30f7;
+  --color-primary-700: #4c1ee3;
+  --color-primary-800: #3f18bf;
+  --color-primary-900: #35169c;
+  --color-primary-950: #1e0b6a;
+
+  /* Neutral 中性色色阶 (基于 Figma 设计) */
+  --color-neutral-0: #ffffff;
+  --color-neutral-50: #f5f7fa;
+  --color-neutral-100: #f2f5f8;
+  --color-neutral-200: #e1e4ea;
+  --color-neutral-300: #cacfd8;
+  --color-neutral-400: #99a0ae;
+  --color-neutral-500: #717784;
+  --color-neutral-600: #525866;
+  --color-neutral-700: #2b303b;
+  --color-neutral-800: #222530;
+  --color-neutral-900: #181b25;
+  --color-neutral-950: #0e121b;
+}
+
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  /* Primary - 紫色 #6c52ff (暗色模式用更亮的 500) */
+  --primary: oklch(0.57 0.24 282.36);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  /* Destructive/Error - 红色 #E93544 (暗色模式用更亮的 500) */
+  --destructive: oklch(0.614 0.214 22.342);
+  --destructive-foreground: oklch(0.985 0 0);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.57 0.24 282.36);
+  --chart-1: oklch(0.57 0.24 282.36);
+  --chart-2: oklch(0.713 0.171 153.607);
+  --chart-3: oklch(0.614 0.214 22.342);
+  --chart-4: oklch(0.77 0.154 80.945);
+  --chart-5: oklch(0.636 0.132 71.194);
+  --sidebar: oklch(0 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.57 0.24 282.36);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.985 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.57 0.24 282.36);
+
+  /* 主色颜色色阶 (暗色模式使用相同色阶) */
+  --color-primary-50: #f3f2ff;
+  --color-primary-100: #e8e8ff;
+  --color-primary-200: #d4d4ff;
+  --color-primary-300: #b6b1ff;
+  --color-primary-400: #9185ff;
+  --color-primary-500: #6c52ff;
+  --color-primary-600: #5a30f7;
+  --color-primary-700: #4c1ee3;
+  --color-primary-800: #3f18bf;
+  --color-primary-900: #35169c;
+  --color-primary-950: #1e0b6a;
+
+  /* Neutral 中性色色阶 (暗色模式使用相同色阶) */
+  --color-neutral-0: #ffffff;
+  --color-neutral-50: #f5f7fa;
+  --color-neutral-100: #f2f5f8;
+  --color-neutral-200: #e1e4ea;
+  --color-neutral-300: #cacfd8;
+  --color-neutral-400: #99a0ae;
+  --color-neutral-500: #717784;
+  --color-neutral-600: #525866;
+  --color-neutral-700: #2b303b;
+  --color-neutral-800: #222530;
+  --color-neutral-900: #181b25;
+  --color-neutral-950: #0e121b;
+}
+
+:root {
+  /* ========= 语义色基础 (基于 Figma 设计) ========= */
+  /* Success - 绿色 #1DAF61 */
+  --success: oklch(0.664 0.163 153.128);
+  --success-foreground: oklch(0.985 0 0);
+  /* Warning - 黄色 #E6A819 */
+  --warning: oklch(0.77 0.154 80.945);
+  --warning-foreground: oklch(0.145 0 0);
+  /* Info - 使用 Primary 紫色 #6C52FF */
+  --info: oklch(0.57 0.24 282.36);
+  --info-foreground: oklch(0.985 0 0);
+}
+
+.dark {
+  /* ========= 语义色基础 (基于 Figma 设计) ========= */
+  /* Success - 绿色 #27C06E (暗色模式用更亮的 500) */
+  --success: oklch(0.713 0.171 153.607);
+  --success-foreground: oklch(0.145 0 0);
+  /* Warning - 黄色 #EAB625 (暗色模式用更亮的 400) */
+  --warning: oklch(0.79 0.165 85);
+  --warning-foreground: oklch(0.145 0 0);
+  /* Info - 使用 Primary 紫色 */
+  --info: oklch(0.57 0.24 282.36);
+  --info-foreground: oklch(0.985 0 0);
+}
+
+:root,
+.dark {
+  --ant-button-border-color-disabled: var(--ant-btn-bg-color-disabled);
+
+  /* ========= Primary 派生 ========= */
+  --primary-hover: color-mix(in oklch, var(--primary) 88%, var(--background));
+  --primary-active: color-mix(in oklch, var(--primary) 78%, var(--background));
+  --primary-border: color-mix(in oklch, var(--primary) 35%, var(--border));
+  --primary-soft-bg: color-mix(in oklch, var(--primary) 12%, var(--background));
+  --primary-bg: color-mix(in oklch, var(--primary) 10%, var(--background));
+  --primary-bg-hover: color-mix(
+    in oklch,
+    var(--primary) 18%,
+    var(--background)
+  );
+  --primary-border-hover: color-mix(
+    in oklch,
+    var(--primary) 50%,
+    var(--border)
+  );
+  --primary-text: var(--primary);
+  --primary-text-hover: var(--primary-hover);
+  --primary-text-active: var(--primary-active);
+
+  /* ========= Destructive / Error 派生 ========= */
+  --destructive-hover: color-mix(
+    in oklch,
+    var(--destructive) 88%,
+    var(--background)
+  );
+  --destructive-active: color-mix(
+    in oklch,
+    var(--destructive) 78%,
+    var(--background)
+  );
+  --destructive-border: color-mix(
+    in oklch,
+    var(--destructive) 35%,
+    var(--border)
+  );
+  --destructive-soft-bg: color-mix(
+    in oklch,
+    var(--destructive) 12%,
+    var(--background)
+  );
+  --error-bg: color-mix(in oklch, var(--destructive) 10%, var(--background));
+  --error-bg-hover: color-mix(
+    in oklch,
+    var(--destructive) 18%,
+    var(--background)
+  );
+  --error-border-hover: color-mix(
+    in oklch,
+    var(--destructive) 50%,
+    var(--border)
+  );
+  --error-text: var(--destructive);
+  --error-text-hover: var(--destructive-hover);
+  --error-text-active: var(--destructive-active);
+
+  /* ========= Success 派生 ========= */
+  --success-hover: color-mix(in oklch, var(--success) 88%, var(--background));
+  --success-active: color-mix(in oklch, var(--success) 78%, var(--background));
+  --success-border: color-mix(in oklch, var(--success) 35%, var(--border));
+  --success-bg: color-mix(in oklch, var(--success) 10%, var(--background));
+  --success-bg-hover: color-mix(
+    in oklch,
+    var(--success) 18%,
+    var(--background)
+  );
+  --success-border-hover: color-mix(
+    in oklch,
+    var(--success) 50%,
+    var(--border)
+  );
+  --success-text: var(--success);
+  --success-text-hover: var(--success-hover);
+  --success-text-active: var(--success-active);
+
+  /* ========= Warning 派生 ========= */
+  --warning-hover: color-mix(in oklch, var(--warning) 88%, var(--background));
+  --warning-active: color-mix(in oklch, var(--warning) 78%, var(--background));
+  --warning-border: color-mix(in oklch, var(--warning) 35%, var(--border));
+  --warning-bg: color-mix(in oklch, var(--warning) 10%, var(--background));
+  --warning-bg-hover: color-mix(
+    in oklch,
+    var(--warning) 18%,
+    var(--background)
+  );
+  --warning-border-hover: color-mix(
+    in oklch,
+    var(--warning) 50%,
+    var(--border)
+  );
+  --warning-text: var(--warning);
+  --warning-text-hover: var(--warning-hover);
+  --warning-text-active: var(--warning-active);
+
+  /* ========= Info 派生 ========= */
+  --info-hover: color-mix(in oklch, var(--info) 88%, var(--background));
+  --info-active: color-mix(in oklch, var(--info) 78%, var(--background));
+  --info-border: color-mix(in oklch, var(--info) 35%, var(--border));
+  --info-bg: color-mix(in oklch, var(--info) 10%, var(--background));
+  --info-bg-hover: color-mix(in oklch, var(--info) 18%, var(--background));
+  --info-border-hover: color-mix(in oklch, var(--info) 50%, var(--border));
+  --info-text: var(--info);
+  --info-text-hover: var(--info-hover);
+  --info-text-active: var(--info-active);
+
+  /* ========= Muted / Accent 派生 ========= */
+  --muted-hover: color-mix(in oklch, var(--muted) 85%, var(--background));
+  --accent-hover: color-mix(in oklch, var(--accent) 85%, var(--background));
+
+  /* ========= Ring 派生（focus/outline） ========= */
+  --ring-20: color-mix(in oklch, var(--ring) 20%, transparent);
+  --ring-30: color-mix(in oklch, var(--ring) 30%, transparent);
+
+  /* ========= Border 强化 ========= */
+  --border-strong: color-mix(in oklch, var(--border) 75%, var(--foreground));
+  --border-secondary: color-mix(in oklch, var(--border) 60%, transparent);
+
+  /* ========= Disabled ========= */
+  --disabled-bg: color-mix(in oklch, var(--muted) 70%, var(--background));
+  --disabled-text: color-mix(
+    in oklch,
+    var(--muted-foreground) 80%,
+    var(--foreground)
+  );
+
+  /* ========= Background 层级 ========= */
+  --bg-spotlight: color-mix(in oklch, var(--foreground) 6%, var(--background));
+  --bg-mask: color-mix(in oklch, var(--foreground) 45%, transparent);
+
+  --ant-tooltip-color: #101828;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary-50: var(--color-primary-50);
+  --color-primary-100: var(--color-primary-100);
+  --color-primary-200: var(--color-primary-200);
+  --color-primary-300: var(--color-primary-300);
+  --color-primary-400: var(--color-primary-400);
+  --color-primary-500: var(--color-primary-500);
+  --color-primary-600: var(--color-primary-600);
+  --color-primary-700: var(--color-primary-700);
+  --color-primary-800: var(--color-primary-800);
+  --color-primary-900: var(--color-primary-900);
+  --color-primary-950: var(--color-primary-950);
+  --color-neutral-0: var(--color-neutral-0);
+  --color-neutral-50: var(--color-neutral-50);
+  --color-neutral-100: var(--color-neutral-100);
+  --color-neutral-200: var(--color-neutral-200);
+  --color-neutral-300: var(--color-neutral-300);
+  --color-neutral-400: var(--color-neutral-400);
+  --color-neutral-500: var(--color-neutral-500);
+  --color-neutral-600: var(--color-neutral-600);
+  --color-neutral-700: var(--color-neutral-700);
+  --color-neutral-800: var(--color-neutral-800);
+  --color-neutral-900: var(--color-neutral-900);
+  --color-neutral-950: var(--color-neutral-950);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+  --font-serif: var(--font-serif);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  --shadow-2xs: var(--shadow-2xs);
+  --shadow-xs: var(--shadow-xs);
+  --shadow-sm: var(--shadow-sm);
+  --shadow: var(--shadow);
+  --shadow-md: var(--shadow-md);
+  --shadow-lg: var(--shadow-lg);
+  --shadow-xl: var(--shadow-xl);
+  --shadow-2xl: var(--shadow-2xl);
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.beam-border {
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.beam-border::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  background: conic-gradient(from 0deg, transparent 0 340deg, white 360deg);
+  animation: spin 4s linear infinite;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.group:hover .beam-border::before {
+  opacity: 1;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  html {
+    @apply font-sans;
+  }
+}

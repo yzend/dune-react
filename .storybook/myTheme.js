@@ -1,7 +1,7 @@
 import { create } from "storybook/theming/create";
 
 export default create({
-  base: "dark",
+  base: "light",
   brandTitle: "Dune React",
   brandUrl: "https://www.google.com/",
   brandImage:

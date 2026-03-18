@@ -1,5 +1,7 @@
 import { Preview } from "@storybook/react-vite";
 import { withThemeByClassName } from "@storybook/addon-themes";
+import { createElement } from "react";
+import { ThemeProvider } from "next-themes";
 import { themes } from "storybook/theming";
 import "./global.css";
 
@@ -13,19 +15,30 @@ const preview: Preview = {
       },
     },
     docs: {
-      theme: themes.dark, // The replacement theme to use
+      theme: themes.light,
     },
   },
   initialGlobals: {
-    backgrounds: { value: "dark" },
+    backgrounds: { value: "light" },
   },
   decorators: [
+    (Story) =>
+      createElement(
+        ThemeProvider,
+        {
+          attribute: "class",
+          defaultTheme: "light",
+          enableSystem: true,
+          disableTransitionOnChange: true,
+        },
+        createElement(Story)
+      ),
     withThemeByClassName<any>({
       themes: {
         light: "light",
         dark: "dark",
       },
-      defaultTheme: "dark",
+      defaultTheme: "light",
     }),
   ],
 };

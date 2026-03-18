@@ -1,0 +1,7 @@
+{
+  "mcpServers": {
+    "storybook": {
+      "url": "http://localhost:8080/mcp"
+    }
+  }
+}
